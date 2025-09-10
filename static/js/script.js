@@ -1,6 +1,4 @@
 /*
-    Team-26
-    CS 222
     File - script.js
     Description of the file - JS logic.
 */

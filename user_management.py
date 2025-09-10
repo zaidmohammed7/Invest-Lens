@@ -1,6 +1,4 @@
 """
-    Team-26
-    CS 222
     Description of the file - validate and interact with users and their data
 """
 

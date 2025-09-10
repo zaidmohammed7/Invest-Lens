@@ -1,6 +1,4 @@
 """
-    Team-26
-    CS 222
     Description of the file - moving the csv data to the SQL database
 """
 
