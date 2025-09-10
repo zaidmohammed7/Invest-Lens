@@ -1,4 +1,4 @@
-# Team-26: Invest Lens
+# Invest Lens
 
 ## File Descriptions
 
