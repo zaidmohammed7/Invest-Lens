@@ -1,0 +1,93 @@
+<!--
+    Team-26
+    CS 222
+    File - dashboard.html
+    Description of the file - contains the html code for the dashboard.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Dashboard</title>
+    <script>
+        const sessionTimeoutMs = {{ session_timeout_ms | safe }};
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body>
+<div class="background-pattern"></div>
+<header>
+<!--    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">-->
+    <div class="logout-container">
+        <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">
+            <span>Logout</span>
+        </button>
+        <div id="timeout-timer" class="timeout-timer">Timeout: --:--</div>
+    </div>
+</header>
+
+<main>
+    <div class="greeting">
+        <h1>{{greeting_word}}, {{ user_id }}!</h1>
+        <p>That's how you say hello in {{ greeting_language }}.</p>
+    </div>
+    <form method="POST" action="{{ url_for('dashboard') }}" class="filter-form">
+        <label for="inp_date">Select Date:</label>
+        <input type="date" id="inp_date" name="inp_date" value="{{ selected_date }}">
+
+        <label for="inp_user">Select User:</label>
+        <select id="inp_user" name="inp_user">
+            {% for user in user_list %}
+            <option value="{{ user }}" {% if user== selected_user %}selected{% endif %}>{{ user }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="submit-btn">View</button>
+        <button type="button" class="submit-btn" onclick="resetTable()">Reset</button>
+        <button type="submit" class="submit-btn">Update</button>
+        </form>
+
+        {% if data %}
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th class="sortable" onclick="sortTable(0)">Date</th>
+                <th class="sortable" onclick="sortTable(1)">User</th>
+                <th class="sortable" onclick="sortTable(2)">Symbol</th>
+                <th>Order No.</th>
+                <th>Order Status</th>
+                <th>Buy Price</th>
+                <th>Last Trade Price</th>
+                <th class="sortable" onclick="sortTable(7, true)">Profit/Loss</th>
+                <th class="sortable" onclick="sortTable(8, true)">Profit/Loss %</th>
+                <th class="sortable" onclick="sortTable(9, true)">Quantity</th>
+                <th>OCO Order No.</th>
+                <th>OCO Status</th>
+                <th>Overall Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr class="{{ row[-1] }}">
+                    {% for col in row[:-1] %}
+                    <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        {% else %}
+        <div class="no-data-message">
+            <p>Please select your preferences to view the data.</p>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

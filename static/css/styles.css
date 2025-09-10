@@ -1,0 +1,363 @@
+/*
+    Team-26
+    CS 222
+    File - styles.css
+    Description of the file - Styling code
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, #DAC5EE, #ECE2F6);
+    font-family: Arial, sans-serif;
+}
+
+/* Background patterns */
+.background-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.background-pattern::before,
+.background-pattern::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    transform: skew(-20deg);
+}
+
+.background-pattern::before {
+    width: 300px;
+    height: 600px;
+    top: -100px;
+    left: -50px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.background-pattern::after {
+    width: 400px;
+    height: 700px;
+    bottom: -150px;
+    right: -50px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Header and footer styling */
+header, footer {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: none;
+    width: 100%;
+    z-index: 10;
+}
+
+header img {
+    height: 45px;
+}
+
+footer {
+    justify-content: center;
+}
+
+footer img {
+    height: 20px;
+}
+
+/* Main content */
+main {
+    display: block;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    z-index: 1;
+}
+
+.greeting {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.greeting h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.greeting p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: gray;
+}
+
+.data-box {
+    flex-grow: 1;
+    width: 90%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+/* Logout Container - Button + Timer */
+
+.logout-btn {
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #7C698E, #7C698E);
+  color: white;
+  overflow: hidden;
+  padding: 0.8em 1.2em;
+  text-align: center;
+  display: inline-block;
+  width: auto;
+}
+
+.logout-btn span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-block;
+}
+
+.logout-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.logout-btn:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.logout-btn:active {
+  transform: scale(0.95);
+}
+
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.timeout-timer {
+    font-size: 12px;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+/* Data Viewer */
+
+body {
+    background: linear-gradient(to bottom, #DAC5EE, #ECE2F6);
+    font-family: Arial, sans-serif;
+}
+
+/* Filter Bar */
+.filter-form {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center; /* Vertically aligns text and input fields */
+    margin: 20px 0;
+}
+
+.filter-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #7C698E;
+    margin-right: 10px;
+}
+
+.filter-form input, .filter-form select {
+    position: relative;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    z-index: 1;
+}
+
+.filter-form .submit-btn {
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    border-radius: 0.8em;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(to right, #7C698E, #7C698E);
+    color: white;
+    overflow: hidden;
+    padding: 0.8em 1.2em;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.4s ease;
+}
+
+.filter-form .submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.filter-form .submit-btn:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
+
+.filter-form .submit-btn:active {
+    transform: scale(0.95);
+}
+
+/* Data Table */
+.data-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.data-table th {
+    background-color: #7C698E;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+.data-table th {
+    background-color: #7C698E;
+    color: white;
+    text-align: left;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table td {
+    background-color: inherit;
+    color: inherit;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Default message for Data Table */
+.no-data-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #7C698E;
+    margin: 20px 0;
+}
+
+/* Highlight rows for significant profit/loss percentages */
+.green-highlight, .green-highlight td {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.red-highlight, .red-highlight td {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.dark-green-highlight, .dark-green-highlight td {
+    background-color: #8FB499;
+    color: #0e4429;
+}
+
+.dark-red-highlight, .dark-red-highlight td {
+    background-color: #E58384;
+    color: #721c24;
+}
+
+
+/* Sorting the table */
+th.sortable {
+    cursor: pointer;
+    position: relative;
+}
+
+th.sortable::after {
+    content: " ⇅";
+    font-size: 12px;
+    color: gray;
+}
+
+th.sortable:hover {
+    color: #7C698E;
+}
